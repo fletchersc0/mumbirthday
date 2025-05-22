@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Elena!</title>
+  <!-- Retro‑pixel font for Webcore vibes -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    /* === Webcore aesthetic === */
+    html,body{
+      margin:0;
+      height:100%;
+    }
+    body{
+      font-family:'VT323', monospace;
+      /* pixel starfield background */
+      background:url("https://i.imgur.com/t1i0cuV.jpeg") repeat fixed center;
+      image-rendering:pixelated;
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow-x:hidden;
+    }
+    .crt-frame{
+      background:rgba(0,0,0,.65);
+      padding:2rem 1.5rem;
+      border:4px double #fff;
+      box-shadow:0 0 12px #0ff, 0 0 24px #00f;
+      backdrop-filter:blur(2px);
+      max-width:900px;
+      width:90%;
+    }
+    h1{
+      font-size:3.5rem;
+      letter-spacing:2px;
+      margin:0 0 1rem;
+      color:#0ff;
+      text-shadow:0 0 6px #0ff,0 0 12px #fff;
+    }
+    marquee{
+      font-size:2rem;
+      color:#ff00d4;
+      margin-bottom:1rem;
+    }
+    video{
+      width:100%;
+      max-height:60vh;
+      border:3px ridge #fff;
+      border-radius:6px;
+      background:#000;
+      box-shadow:0 0 10px #fff;
+    }
+    footer{
+      margin-top:1rem;
+      font-size:1.4rem;
+      color:#ffdd57;
+      text-shadow:0 0 6px #ffdd57;
+    }
+    @media(max-width:600px){
+      h1{font-size:2.4rem;}
+      marquee{font-size:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="crt-frame">
+    <marquee behavior="scroll" direction="left" scrollamount="8">★ Happy Birthday Elena!! ★ You rock!! ★</marquee>
+    <h1>Happy Birthday, Elena! 🎂</h1>
+    <video controls>
+      <source src="birthday_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <footer>Made with ❤ by your friend Fletcher &nbsp;|&nbsp; 2025</footer>
+  </div>
+</body>
+</html>
