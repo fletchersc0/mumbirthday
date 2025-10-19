@@ -4,79 +4,223 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday, Mum!</title>
-  <!-- Retro‑pixel font for Webcore vibes -->
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <style>
-    /* === Webcore aesthetic === */
-    html,body{
-      margin:0;
-      height:100%;
+    /* Root color variables */
+    :root {
+      --bg-color: #fff;
+      --text-color: #000;
+      --border-color: #000;
     }
-    body{
-      font-family:'VT323', monospace;
-      /* pixel starfield background */
-      background:url("https://i.imgur.com/t1i0cuV.jpeg") repeat fixed center;
-      image-rendering:pixelated;
-      color:#fff;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      overflow-x:hidden;
+    body.dark-mode {
+      --bg-color: #000;
+      --text-color: #fff;
+      --border-color: #fff;
     }
-    .crt-frame{
-      background:rgba(0,0,0,.65);
-      padding:2rem 1.5rem;
-      border:4px double #fff;
-      box-shadow:0 0 12px #0ff, 0 0 24px #00f;
-      backdrop-filter:blur(2px);
-      max-width:900px;
-      width:90%;
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
     }
-    h1{
-      font-size:3.5rem;
-      letter-spacing:2px;
-      margin:0 0 1rem;
-      color:#0ff;
-      text-shadow:0 0 6px #0ff,0 0 12px #fff;
+    
+    body {
+      font: 18px/1.6 "Times New Roman", serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    marquee{
-      font-size:2rem;
-      color:#ff00d4;
-      margin-bottom:1rem;
+    
+    header {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 56px;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      padding: 0 1.5rem; 
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-color); 
+      z-index: 10;
+      transition: background 0.3s, border-color 0.3s;
     }
-    video{
-      width:100%;
-      max-height:60vh;
-      border:3px ridge #fff;
-      border-radius:6px;
-      background:#000;
-      box-shadow:0 0 10px #fff;
+    
+    header h1 { 
+      font-size: 1.2em;
+      font-weight: normal;
+      letter-spacing: 0.5px;
     }
-    footer{
-      margin-top:1rem;
-      font-size:1.4rem;
-      color:#ffdd57;
-      text-shadow:0 0 6px #ffdd57;
+    
+    main {
+      flex: 1;
+      margin-top: 56px;
+      margin-bottom: 120px;
+      padding: 2rem 1.5rem;
+      max-width: 900px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
-    @media(max-width:600px){
-      h1{font-size:2.4rem;}
-      marquee{font-size:1.5rem;}
+    
+    .birthday-message {
+      margin-bottom: 2rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+    
+    .birthday-message marquee {
+      font-size: 1.3em;
+      letter-spacing: 1px;
+    }
+    
+    video {
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      margin: 2rem auto;
+      display: block;
+    }
+    
+    footer {
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      height: auto;
+      min-height: 56px;
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      justify-content: center;
+      padding: 1rem 1.5rem; 
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-color); 
+      z-index: 10;
+      transition: background 0.3s, border-color 0.3s;
+      gap: 0.75rem;
+    }
+    
+    footer .signature {
+      font-size: 0.95em;
+    }
+
+    footer .gift-message {
+      font-size: 0.9em;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    footer .gift-message a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      transition: text-decoration-style 0.3s;
+    }
+
+    footer .gift-message a:hover {
+      text-decoration-style: solid;
+    }
+
+    footer .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+    }
+    
+    footer .toggler {
+      background: none; 
+      border: none; 
+      font-size: 1.2em;
+      cursor: pointer; 
+      color: inherit;
+    }
+    
+    @media(max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+      header h1 {
+        font-size: 1em;
+      }
+      main {
+        padding: 1.5rem 1rem;
+        margin-bottom: 180px;
+      }
+      .birthday-message {
+        padding: 1rem 0;
+      }
+      .birthday-message marquee {
+        font-size: 1.1em;
+      }
+      footer {
+        padding: 0.75rem 1rem;
+      }
+      footer .signature {
+        font-size: 0.85em;
+      }
+      footer .gift-message {
+        font-size: 0.8em;
+      }
+      footer .footer-top {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="crt-frame">
-    <marquee behavior="scroll" direction="left" scrollamount="8">★ Happy Birthday Mum!! ★ You rock!! ★</marquee>
-    <h1>Happy Birthday, Mum! 🎂</h1>
+  <header>
+    <h1>Happy Birthday, Mum</h1>
+  </header>
+
+  <main>
+    <div class="birthday-message">
+      <marquee behavior="scroll" direction="left" scrollamount="8">★ Happy Birthday Mum!! ★ You rock!! ★</marquee>
+    </div>
+    
     <video controls>
       <source src="birthday_video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <footer>Made with ❤ by your son Fletcher &nbsp;|&nbsp; 2025</footer>
-  </div>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="signature">
+        <span>Made with ❤ by your son Fletcher | 2025</span>
+      </div>
+      <button class="toggler" id="mode-toggle" aria-label="Toggle light/dark mode">⋆ ⁺  ₊  ⋆    ☾    ⋆  ⁺  ₊ ⋆</button>
+    </div>
+    
+    <div class="gift-message">
+      <p>Your present: Choose your tattoo artist! 
+        <a href="https://victimsofink.com.au/blog/article/dappy-melbourne-fine-line-tattoo/" target="_blank" rel="noopener">Dappy — Victims of Ink</a> | 
+        <a href="https://www.instagram.com/caventattoo/" target="_blank" rel="noopener">Caven — Instagram</a> | 
+        <a href="https://danielelugli.com/portfolio/" target="_blank" rel="noopener">Daniele Lugli — Portfolio</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Light/Dark mode toggler
+    const toggle = document.getElementById('mode-toggle');
+    const darkSymbol = '⋆ ⁺  ₊  ⋆    ☾    ⋆  ⁺  ₊ ⋆';
+    const lightSymbol = '⋆｡ ﾟ☁︎｡ 𖤓 ⋆｡ ﾟ☁︎';
+    
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? lightSymbol : darkSymbol;
+    });
+  </script>
 </body>
 </html>
-
-
